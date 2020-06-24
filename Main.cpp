@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
-//#include "Game.hpp"
+#include "Game.hpp"
 #include "Player.hpp"
 using std::cout;
 using std::endl;
 int main() {
+	Game Game1;
 	Player Player1, Player2;
 	cout << Player1.GetLife() << endl;
 	cout << Player1.GetName() << endl;
@@ -20,6 +21,8 @@ int main() {
 	cout << Player1.GetName() << endl;
 	cout << Player2.GetLife() << endl;
 	cout << Player2.GetName() << endl;
+
+	cout << Game1.Size();
 
 	return 0;
 }
