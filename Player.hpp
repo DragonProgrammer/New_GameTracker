@@ -1,3 +1,5 @@
+#ifndef Player
+#define Player
 #include <string>
 using std::string;
 class Player {
@@ -20,4 +22,4 @@ class Player {
 	string GetName();
 };
 
-
+#endif
