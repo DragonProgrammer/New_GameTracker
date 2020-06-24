@@ -1,7 +1,7 @@
-#ifndef Player
-#define Player
 #include <string>
 using std::string;
+#ifndef Player_h
+#define Player_h
 class Player {
 	private:
 	int Life;
