@@ -12,6 +12,7 @@ class Player {
 	
 	public:
 	Player();
+	Player(string N, int L);
 	void SetLife(int L);
 	void SetName(string N);
 	void ChangeLife(int ChangeL);

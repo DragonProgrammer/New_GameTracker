@@ -7,6 +7,11 @@ Player::Player() {
 	Status = 'I';
 }
 
+Player::Player(string N, int L) {
+	Life = L;
+	Name = N;
+	Status = 'I';
+}
 // Takes in value from a game start function that determines type of game and
 // from that picks starting life
 void Player::SetLife(int L) { Life = L; }

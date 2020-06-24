@@ -5,8 +5,8 @@
 using std::cout;
 using std::endl;
 int main() {
-	Game Game1;
-	Player Player1, Player2;
+	Game Game1, Game2(2);
+	Player Player1, Player2, Player3("Lizzy", 40);
 	cout << Player1.GetLife() << endl;
 	cout << Player1.GetName() << endl;
 	cout << Player2.GetLife() << endl;
@@ -22,7 +22,8 @@ int main() {
 	cout << Player2.GetLife() << endl;
 	cout << Player2.GetName() << endl;
 
-	cout << Game1.Size();
+	cout << Game1.Size() << endl;
+	cout << Game2.Size();
 
 	return 0;
 }
