@@ -18,7 +18,7 @@ class Game{
 		int NumP();
 
 		auto getPlayers(){return Players;};
-
+		string PlayersData();
 		void SetNumP(int NP);
 
 		void AddPlayer(string Name, int Life);

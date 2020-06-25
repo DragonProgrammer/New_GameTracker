@@ -21,6 +21,7 @@ class Player {
 	int GetLife();
 	char GetStatus();
 	string GetName();
+	string PlayerData();
 };
 
 #endif

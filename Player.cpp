@@ -1,6 +1,7 @@
 #include "Player.hpp"
 #include <string>
 using std::string;
+using std::to_string;
 Player::Player() {
 	Life = 0;
 	Name = "   ";
@@ -23,3 +24,9 @@ int Player::GetLife() { return Life; }
 char Player::GetStatus() { return Status; }
 
 string Player::GetName() { return Name; }
+
+string Player::PlayerData() {
+	string Output;
+	Output = GetName() + " " + to_string(GetLife()) + "\n";
+	return Output;
+}

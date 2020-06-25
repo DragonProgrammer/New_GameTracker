@@ -27,8 +27,14 @@ void Game::AddPlayer(string Name, int Life) {
 	Players.push_back(Player(Name, Life));
 }
 
-// auto const Game::getPlayers() { return Players; }
-
 // debug
+string Game::PlayersData() {
+	string Output;
+	for (auto i : Players) {
+		Output = Output + i.PlayerData();
+	}
+	return Output;
+}
+
 int Game::Size() { return Players.size(); }
 int Game::NumP() { return NumPlayers; }

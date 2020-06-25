@@ -8,11 +8,6 @@ int main() {
 	Game Game1, Game2(2);
 	Player Player1, Player2, Player3("Lizzy", 40);
 
-	Player1.SetName("Mike");
-	Player1.SetLife(40);
-	Player2.SetName("Murry");
-	Player2.SetLife(40);
-
 	Game2.SetPlayer("Mike", 40, 0);
 	Game2.SetPlayer("Murry", 40, 1);
 
@@ -21,7 +16,8 @@ int main() {
 
 	cout << Game1.Size() << endl;
 	cout << Game2.Size() << endl;
-
+	Game2.AddPlayer("Llama", 40);
+	cout << Game2.PlayersData();
 	cout << Game2.Size();
 	return 0;
 }
