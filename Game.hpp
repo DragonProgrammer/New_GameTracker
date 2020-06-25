@@ -17,9 +17,12 @@ class Game{
 
 		int NumP();
 
+		auto getPlayers(){return Players;};
+
 		void SetNumP(int NP);
 
-		void SetPlayer(string Name, int Life);
+		void AddPlayer(string Name, int Life);
+		void SetPlayer(string Name, int Life, int Position);
 
 
 };

@@ -18,5 +18,17 @@ Game::Game(int NP) {
 
 void Game::SetNumP(int NP) { NumPlayers = NP; }
 
+// Should overwrite a player in Players with a different Player
+void Game::SetPlayer(string Name, int Life, int Position) {
+	Players[Position] = Player(Name, Life);
+}
+// Adds a player to the end
+void Game::AddPlayer(string Name, int Life) {
+	Players.push_back(Player(Name, Life));
+}
+
+// auto const Game::getPlayers() { return Players; }
+
+// debug
 int Game::Size() { return Players.size(); }
 int Game::NumP() { return NumPlayers; }

@@ -5,7 +5,7 @@
 using std::cout;
 using std::endl;
 int main() {
-	Game Game1, Game2();
+	Game Game1, Game2(2);
 	Player Player1, Player2, Player3("Lizzy", 40);
 
 	Player1.SetName("Mike");
@@ -13,16 +13,14 @@ int main() {
 	Player2.SetName("Murry");
 	Player2.SetLife(40);
 
-	Game2.Players[0] = Player1;
-	Game2.Players[1] = Player2;
+	Game2.SetPlayer("Mike", 40, 0);
+	Game2.SetPlayer("Murry", 40, 1);
 
-	cout << Player3.GetLife() << endl;
-	cout << Player3.GetName() << endl;
+	cout << Game2.getPlayers()[0].GetName() << endl;
+	cout << Game2.getPlayers()[1].GetName() << endl;
 
 	cout << Game1.Size() << endl;
 	cout << Game2.Size() << endl;
-
-	Game2.Players[2] = Player3;
 
 	cout << Game2.Size();
 	return 0;
