@@ -1,7 +1,9 @@
 #include "Game.hpp"
 #include <vector>
+#include "Validate.hpp"
+using std::cin;
+using std::cout;
 using std::vector;
-
 Game::Game() {
 	NumPlayers = 1;
 	while (Players.size() < NumPlayers) {
@@ -35,6 +37,11 @@ string Game::PlayersData() {
 	}
 	return Output;
 }
-
-int Game::Size() { return Players.size(); }
-int Game::NumP() { return NumPlayers; }
+// Start of the interactive part of program
+void Game::InputPlayNum() {
+	cout << "How many players
+	    int
+	    Game::Size() {
+		return Players.size();
+	}
+	int Game::NumP() { return NumPlayers; }
