@@ -23,7 +23,9 @@ class Game{
 
 		void AddPlayer(string Name, int Life);
 		void SetPlayer(string Name, int Life, int Position);
-
+		void InputPlayNum();
+		void InputPlayer(int N);
+		void InputPlayers();
 
 };
 

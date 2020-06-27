@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include <iostream>
 #include <vector>
 #include "Validate.hpp"
 using std::cin;
@@ -39,9 +40,11 @@ string Game::PlayersData() {
 }
 // Start of the interactive part of program
 void Game::InputPlayNum() {
-	cout << "How many players
-	    int
-	    Game::Size() {
-		return Players.size();
-	}
-	int Game::NumP() { return NumPlayers; }
+	//	cout << "How many players?\n";
+
+	Validate::IsInt();
+	//	SetNumP(Validate.IsPositive());
+}
+
+int Game::Size() { return Players.size(); }
+int Game::NumP() { return NumPlayers; }

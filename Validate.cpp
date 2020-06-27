@@ -1,5 +1,4 @@
 #include "Validate.hpp"
-#include <iostream>
 #include <string>
 using std::cin;
 using std::cout;
@@ -12,12 +11,9 @@ int Validate::IsInt() {
 		cout << "Input must be an integer\n";
 		cin >> checked;
 		// should clear the line
-		// cin.ignore(numeric_limits<streamsize>::max, "\n");
-		// above has error to look into "invalid conversion from ‘long int (*)()
-		// noexcept’ to ‘std::streamsize {aka long int}’ [-fpermissive]"
-		cin.ignore(80, '\n');
-	} while (!cin.good());  // run once then check if int
-	return checked;
+		cin.ignore(numeric_limits<streamsize>::max, "\n");
+	} while (!cin.good)  // run once then check if int
+	    return checked;
 }
 
 int Validate::IsPositive() {
