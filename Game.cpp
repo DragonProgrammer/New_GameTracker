@@ -40,9 +40,9 @@ string Game::PlayersData() {
 }
 // Start of the interactive part of program
 void Game::InputPlayNum() {
-	//	cout << "How many players?\n";
+	cout << "How many players?\n";
 
-	Validate::IsInt();
+	Validate.IsPositive();
 	//	SetNumP(Validate.IsPositive());
 }
 
