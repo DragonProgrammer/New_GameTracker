@@ -3,8 +3,7 @@
 #include <string>
 using std::string;
 
-class Validate{
-	public:
+namespace Validate{
 		int IsInt();
 		int IsPositive();
 		string is_AllChar();

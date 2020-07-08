@@ -1,10 +1,11 @@
 #include "Game.hpp"
 #include <iostream>
 #include <vector>
-#include "Validate.hpp"
+#include "Validate.cpp"
 using std::cin;
 using std::cout;
 using std::vector;
+using Validate::IsPositive;
 Game::Game() {
 	NumPlayers = 1;
 	while (Players.size() < NumPlayers) {
@@ -42,7 +43,7 @@ string Game::PlayersData() {
 void Game::InputPlayNum() {
 	cout << "How many players?\n";
 
-	Validate.IsPositive();
+	Validate::IsPositive();
 	//	SetNumP(Validate.IsPositive());
 }
 

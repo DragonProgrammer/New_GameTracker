@@ -1,11 +1,11 @@
-#include "Validate.hpp"
+//#include "Validate.hpp"
 #include <string>
 using std::cin;
 using std::cout;
 using std::numeric_limits;
 using std::streamsize;
-
-int Validate::IsInt() {
+namespace Validate {
+int IsInt() {
 	int checked;
 	do {
 		cout << "Input must be an integer\n";
@@ -16,7 +16,7 @@ int Validate::IsInt() {
 	    return checked;
 }
 
-int Validate::IsPositive() {
+int IsPositive() {
 	int pos = IsInt();
 	if (pos > 0) {
 		return pos;
@@ -25,3 +25,4 @@ int Validate::IsPositive() {
 		return IsPositive();
 	}
 }
+}  // namespace Validate
