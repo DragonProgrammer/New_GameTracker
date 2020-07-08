@@ -1,29 +1,40 @@
 //#include "Validate.hpp"
+#include <fstream>
 #include <ios>
 #include <iostream>
 #include <limits>
+#include <sstream>
 #include <string>
 using std::cin;
-
 using std::cout;
+using std::eof;
 using std::numeric_limits;
 using std::streamsize;
 namespace Validate {
 int IsInt() {
 	int checked;
-	do {
+	while (1) {
 		cout << "Input must be an integer\n";
-		cin >> checked;
+		if (cin >> checked) {
+			return checked;
+		}
 		cout << checked;
 		// should clear the line
 		// cin.ignore(numeric_limits<streamsize>::max, "\n");
 		cin.ignore(80, '\n');
-	} while (!cin.good());  // run once then check if int
-	return checked;
-}
+	}
+
+	while (!cin.eof())
+		;  // run once then check if int
+	return -23636;
+}  // namespace Validate
 
 int IsPositive() {
 	int pos = IsInt();
+	if (pos == -23636) {
+		return -1;
+	}
+
 	if (pos > 0) {
 		return pos;
 	} else if (pos < 1) {
