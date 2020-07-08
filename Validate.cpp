@@ -5,15 +5,16 @@
 #include <limits>
 #include <sstream>
 #include <string>
+
 using std::cin;
 using std::cout;
-using std::eof;
 using std::numeric_limits;
 using std::streamsize;
+// using std::basic_ios<std::fstream>::eof();
 namespace Validate {
 int IsInt() {
 	int checked;
-	while (1) {
+	do {
 		cout << "Input must be an integer\n";
 		if (cin >> checked) {
 			return checked;
@@ -24,8 +25,7 @@ int IsInt() {
 		cin.ignore(80, '\n');
 	}
 
-	while (!cin.eof())
-		;  // run once then check if int
+	while (!cin.fail());  // run once then check if int
 	return -23636;
 }  // namespace Validate
 
