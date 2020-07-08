@@ -20,5 +20,9 @@ int main() {
 	Game2.AddPlayer("Llama", 40);
 	cout << Game2.PlayersData();
 	cout << Game2.Size();
+	Game1.InputPlayNum();
+	Game1.NumP();
+	Game1.InputPlayNum();
+	Game1.NumP();
 	return 0;
 }
