@@ -8,25 +8,28 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::getline;
 using std::numeric_limits;
 using std::streamsize;
 // using std::basic_ios<std::fstream>::eof();
 namespace Validate {
 int IsInt() {
+	string input;
 	int checked;
-	do {
-		cout << "Input must be an integer\n";
-		if (cin >> checked) {
+	cout << "Input must be an integer\n";
+
+	while (getline(cin, input, '\n')) {
+		cin.clear();
+		if (input == "0") {
+			return 0;
+		}
+		checked = stoi(input);
+		if (!checked == 0) {
 			return checked;
 		}
-		cout << checked;
-		// should clear the line
-		// cin.ignore(numeric_limits<streamsize>::max, "\n");
-		cin.ignore(80, '\n');
+		cout << "input is not an integer. Try again:\n";
 	}
 
-	while (!cin.fail());  // run once then check if int
-	return -23636;
 }  // namespace Validate
 
 int IsPositive() {

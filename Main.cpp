@@ -22,7 +22,5 @@ int main() {
 	cout << Game2.Size();
 	Game1.InputPlayNum();
 	Game1.InputPlayNum();
-	Game1.InputPlayNum();
-	Game1.InputPlayNum();
 	return 0;
 }
