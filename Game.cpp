@@ -5,7 +5,9 @@
 #include "Validate.cpp"
 using std::cin;
 using std::cout;
+using std::endl;
 using std::getline;
+using std::stoi;
 using std::vector;
 using Validate::IsPositive;
 Game::Game() {
@@ -46,13 +48,14 @@ void Game::InputPlayNum() {
 	cout << "\nnHow many players?\n";
 	while (1) {
 		string input = "  ";  // leading white space is ignored
-		if (!getline(cin, input, '\n')) {
+		getline(cin, input, '\n');
+		if (cin.fail()) {
 			cout << "No more input\n";
 			return;
 		}
+		cout << input << endl;
 		if (IsPositive(input)) {
-			int num = input;
-			SetNumP(num);
+			SetNumP(stoi(input));
 			break;
 		}
 		// cin.ignore(80. '\n');

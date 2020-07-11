@@ -18,8 +18,7 @@ bool IsInt(string I) {
 	if (I == "0") {
 		return true;
 	}
-	int C = stoi(I);
-	if ((int C = stoi(I)) != 0) {
+	if (stoi(I) != 0) {
 		return true;
 	}
 	return false;
@@ -29,7 +28,7 @@ bool IsPositive(string I) {
 	if (!IsInt(I)) {
 		return false;
 	}
-	if ((int c = stoi(I)) > 0) {
+	if (stoi(I) > 0) {
 		return true;
 	}
 	return false;
