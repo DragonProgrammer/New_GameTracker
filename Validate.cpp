@@ -1,28 +1,36 @@
 //#include "Validate.hpp"
+#include <fstream>
+#include <ios>
+#include <iostream>
+#include <limits>
+#include <sstream>
 #include <string>
 using std::cin;
 using std::cout;
+using std::endl;
+using std::getline;
 using std::numeric_limits;
+using std::stoi;
 using std::streamsize;
+// using std::basic_ios<std::fstream>::eof();
 namespace Validate {
-int IsInt() {
-	int checked;
-	do {
-		cout << "Input must be an integer\n";
-		cin >> checked;
-		// should clear the line
-		cin.ignore(numeric_limits<streamsize>::max, "\n");
-	} while (!cin.good)  // run once then check if int
-	    return checked;
-}
-
-int IsPositive() {
-	int pos = IsInt();
-	if (pos > 0) {
-		return pos;
-	} else if (pos < 1) {
-		cout << "Input an unteger grater then zero\n";
-		return IsPositive();
+bool IsInt(string I) {
+	if (I == "0") {
+		return true;
 	}
+	if (stoi(I) != 0) {
+		return true;
+	}
+	return false;
+}  // namespace Validate
+
+bool IsPositive(string I) {
+	if (!IsInt(I)) {
+		return false;
+	}
+	if (stoi(I) > 0) {
+		return true;
+	}
+	return false;
 }
 }  // namespace Validate

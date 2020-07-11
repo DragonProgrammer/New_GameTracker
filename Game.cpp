@@ -1,9 +1,13 @@
 #include "Game.hpp"
+#include <ios>
 #include <iostream>
 #include <vector>
 #include "Validate.cpp"
 using std::cin;
 using std::cout;
+using std::endl;
+using std::getline;
+using std::stoi;
 using std::vector;
 using Validate::IsPositive;
 Game::Game() {
@@ -41,10 +45,23 @@ string Game::PlayersData() {
 }
 // Start of the interactive part of program
 void Game::InputPlayNum() {
-	cout << "How many players?\n";
-
-	Validate::IsPositive();
-	//	SetNumP(Validate.IsPositive());
+	cout << "\nnHow many players?\n";
+	while (1) {
+		string input = "  ";  // leading white space is ignored
+		getline(cin, input, '\n');
+		if (cin.fail()) {
+			cout << "No more input\n";
+			return;
+		}
+		cout << input << endl;
+		if (IsPositive(input)) {
+			SetNumP(stoi(input));
+			break;
+		}
+		// cin.ignore(80. '\n');
+		cin.clear();
+		cout << "Please input a number greater then 0\n";
+	}
 }
 
 int Game::Size() { return Players.size(); }
