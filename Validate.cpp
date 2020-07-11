@@ -10,41 +10,28 @@ using std::cout;
 using std::endl;
 using std::getline;
 using std::numeric_limits;
+using std::stoi;
 using std::streamsize;
 // using std::basic_ios<std::fstream>::eof();
 namespace Validate {
-int IsInt() {
-	string input;
-	int checked;
-	cout << "Input must be an integer\n";
-
-	while (getline(cin, input, '\n')) {
-		cin.clear();
-		if (input == "0") {
-			return 0;
-		}
-		checked = stoi(input);
-		if (!checked == 0) {
-			return checked;
-		}
-		cout << "input is not an integer. Try again:\n";
+bool IsInt(string I) {
+	if (I == "0") {
+		return true;
 	}
-
+	int C = stoi(I);
+	if ((int C = stoi(I)) != 0) {
+		return true;
+	}
+	return false;
 }  // namespace Validate
 
-int IsPositive() {
-	int pos = IsInt();
-	cout << pos << endl;
-	if (pos == -23636) {
-		return -1;
+bool IsPositive(string I) {
+	if (!IsInt(I)) {
+		return false;
 	}
-
-	if (pos > 0) {
-		return pos;
-	} else if (pos < 1) {
-		cout << "Input an unteger grater then zero\n";
-		return IsPositive();
+	if ((int c = stoi(I)) > 0) {
+		return true;
 	}
-	return -1;
+	return false;
 }
 }  // namespace Validate
