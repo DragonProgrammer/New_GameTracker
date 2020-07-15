@@ -1,17 +1,23 @@
 #include "Game.hpp"
+#include <algorithm>
+#include <cctype>
 #include <ios>
 #include <iostream>
+#include <string>
 #include <vector>
 #include "Validate.cpp"
 using std::cin;
 using std::cout;
 using std::endl;
 using std::getline;
+using std::isalpha;
+using std::remove_if;
 using std::stoi;
 using std::to_string;
 using std::vector;
 using Validate::IsInt;
 using Validate::IsPositive;
+
 Game::Game() {
 	NumPlayers = 1;
 	while (Players.size() < NumPlayers) {
@@ -76,6 +82,11 @@ void Game::InputPlayers() {
 		getline(cin, Init, '\n');
 		string Init2 = Init.substr(0, 5);
 		cout << Init2 << endl;
+		Init2.erase(remove_if(Init2.begin(), Init2.end(),
+		                      [](unsigned char c) { return !isalpha(c); }),
+		            Init2.end());
+		cout << Init2 << endl;
+
 		if (IsInt(Init2)) {
 			cout << "Input must be non-numeric.\n";
 			continue;
