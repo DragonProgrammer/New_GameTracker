@@ -18,10 +18,14 @@ bool IsInt(string I) {
 	if (I == "0") {
 		return true;
 	}
-	if (stoi(I) != 0) {
-		return true;
+	try {
+		if (stoi(I) != 0) {
+			return true;
+		}
+	} catch (std::invalid_argument) {
+		cout << "Input must be numeric\n";
+		return false;
 	}
-	return false;
 }  // namespace Validate
 
 bool IsPositive(string I) {

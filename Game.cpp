@@ -8,7 +8,9 @@ using std::cout;
 using std::endl;
 using std::getline;
 using std::stoi;
+using std::to_string;
 using std::vector;
+using Validate::IsInt;
 using Validate::IsPositive;
 Game::Game() {
 	NumPlayers = 1;
@@ -47,7 +49,7 @@ string Game::PlayersData() {
 void Game::InputPlayNum() {
 	cout << "\nnHow many players?\n";
 	while (1) {
-		string input = "  ";  // leading white space is ignored
+		string input;  // leading white space is ignored
 		getline(cin, input, '\n');
 		if (cin.fail()) {
 			cout << "No more input\n";
@@ -58,11 +60,29 @@ void Game::InputPlayNum() {
 			SetNumP(stoi(input));
 			break;
 		}
-		// cin.ignore(80. '\n');
-		cin.clear();
+		// cin.ignore(80, '\n');
+		// cin.clear();
 		cout << "Please input a number greater then 0\n";
 	}
 }
-
+void Game::InputPlayers() {
+	vector<string> Names;
+	int num = this->NumP();
+	int PlayerNum = 1;
+	while (Names.size() < num) {
+		cout << "Please enter the 3 letter initials of Player " +
+		            to_string(PlayerNum) + ":\n";
+		string Init;
+		getline(cin, Init, '\n');
+		string Init2 = Init.substr(0, 5);
+		cout << Init2 << endl;
+		if (IsInt(Init2)) {
+			cout << "Input must be non-numeric.\n";
+			continue;
+		}
+		Names.push_back(Init2);
+		PlayerNum++;
+	}
+}
 int Game::Size() { return Players.size(); }
 int Game::NumP() { return NumPlayers; }

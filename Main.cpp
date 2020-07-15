@@ -21,6 +21,7 @@ int main() {
 	cout << Game2.PlayersData();
 	cout << Game2.Size();
 	Game1.InputPlayNum();
-	Game1.InputPlayNum();
+	cout << Game1.NumP();
+	Game1.InputPlayers();
 	return 0;
 }

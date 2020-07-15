@@ -26,7 +26,6 @@ class Game{
 		void InputPlayNum();
 		void InputPlayer(int N);
 		void InputPlayers();
-
 };
 
 #endif
