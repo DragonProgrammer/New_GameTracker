@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include <algorithm>
 #include <cctype>
+#include <iomanip>
 #include <ios>
 #include <iostream>
 #include <string>
@@ -11,7 +12,11 @@ using std::cout;
 using std::endl;
 using std::getline;
 using std::isalpha;
+using std::left;
 using std::remove_if;
+using std::right;
+using std::setfill;
+using std::setw;
 using std::stoi;
 using std::to_string;
 using std::vector;
@@ -86,7 +91,7 @@ vector<string> Game::GetInitials() {
 	vector<string> Names;
 	int num = this->NumP();
 	int PlayerNum = 1;
-	while (Names.size() < num) {
+	while ((static_cast<signed int>(Names.size())) < num) {
 		cout << "Please enter the 3 letter initials of Player " +
 		            to_string(PlayerNum) + ":\n";
 		string Init;
@@ -146,3 +151,28 @@ int Game::Size() { return Players.size(); }
 int Game::NumP() { return NumPlayers; }
 int Game::InitialLife() { return StartLife; }
 void Game::SetGameType(int T) { GameType = T; }
+
+// format functions
+//
+void Game::GameHeader() {
+	for (int P = 0; P < Players.size(); P++) {
+		if (P == 0) {
+			cout << setfill(' ') << right << setw(5) << Players[0].GetName();
+		} else {
+			cout << " | " << setw(5) << Players[P].GetName();
+		}
+	}
+	cout << endl;
+	for (int U = 0; U < Players.size(); U++) {
+		cout << "________";
+	}
+	cout << endl;
+	for (int L = 0; L < Players.size(); L++) {
+		if (L == 0) {
+			cout << setw(5) << to_string(Players[0].GetLife());
+		} else {
+			cout << " | " << setw(5) << to_string(Players[L].GetLife());
+		}
+	}
+	cout << endl;
+}

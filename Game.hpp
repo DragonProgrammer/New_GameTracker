@@ -30,6 +30,9 @@ class Game{
 		void InputPlayers(vector<string> P);
 		vector<string> GetInitials();
 		void SelectGameType();
+		
+		//format functions
+		void GameHeader();
 };
 
 #endif

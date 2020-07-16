@@ -24,6 +24,8 @@ bool IsInt(string I) {
 		cout << "Input must be numeric\n";
 		return false;
 	}
+	cout << "Why not caught?\n";
+	return false;
 }  // namespace Validate
 
 bool IsPositive(string I) {
@@ -51,6 +53,8 @@ bool Is3Chars(string I) {
 		}
 		return false;
 	}
+	cout << "chould not get here\n";
+	return false;
 }
 bool IsInRange(string I) {
 	if (!IsPositive(I)) {
