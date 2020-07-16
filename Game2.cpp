@@ -1,10 +1,10 @@
-#include "Game.hpp"
 #include <algorithm>
 #include <cctype>
 #include <ios>
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Game.hpp"
 #include "Validate.cpp"
 using std::cin;
 using std::cout;
@@ -15,8 +15,6 @@ using std::remove_if;
 using std::stoi;
 using std::to_string;
 using std::vector;
-using Validate::Is3Chars;
-using Validate::IsInRange;
 using Validate::IsInt;
 using Validate::IsPositive;
 
@@ -63,22 +61,17 @@ void Game::InputPlayNum() {
 			cout << "No more input\n";
 			return;
 		}
-		//	cout << input << endl;
-		if (IsPositive(input)) {
-			SetNumP(stoi(input));
-			break;
-		}
-		// cin.ignore(80, '\n');
-		// cin.clear();
-		cout << "Please input a number greater then 0\n";
+		cout << input << endl;
+		//		if (IsPositive(input)) {
+		//			SetNumP(stoi(input));
+		//			break;
 	}
+	// cin.ignore(80, '\n');
+	// cin.clear();
+	cout << "Please input a number greater then 0\n";
 }
-void InputPlayers(vector<string> P) {
-	for (auto i : P) {
-	}
 }
-
-vector Game::GetPlayers() {
+void Game::InputPlayers() {
 	vector<string> Names;
 	int num = this->NumP();
 	int PlayerNum = 1;
@@ -88,38 +81,19 @@ vector Game::GetPlayers() {
 		string Init;
 		getline(cin, Init, '\n');
 		string Init2 = Init.substr(0, 5);
-		//	cout << Init2 << endl;
+		cout << Init2 << endl;
 		Init2.erase(remove_if(Init2.begin(), Init2.end(),
 		                      [](unsigned char c) { return !isalpha(c); }),
 		            Init2.end());
 		cout << Init2 << endl;
 
-		if (!Is3Chars(Init2)) {
+		if (IsInt(Init2)) {
+			cout << "Input must be non-numeric.\n";
 			continue;
 		}
 		Names.push_back(Init2);
 		PlayerNum++;
 	}
-	return Names;
-}
-void Game::SelectGameType() {
-	cout << "Input the number of the type of game played: \n"
-	     << "1) 60 card, 20 Life \n"
-	     << "2) 100 card, 40 Life \n"
-	     << "3) 40 card, 20 Life \n"
-	     << "4) 60 card, 30 Life\n";
-	string Game;
-	getline(cin, Game, '\n');
-	if (cin.fail()) {
-		cout << "no more inputs\n";
-		exit();
-	}
-	if (IsInRange(Game)) {
-		SetGameType(stoi(Game));
-	} else {
-		return SelectGameType();
-	}
 }
 int Game::Size() { return Players.size(); }
 int Game::NumP() { return NumPlayers; }
-void Game::SetGameType(int T) { GameType = T; }

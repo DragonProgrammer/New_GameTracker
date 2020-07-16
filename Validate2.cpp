@@ -35,32 +35,20 @@ bool IsPositive(string I) {
 	}
 	return false;
 }
-bool Is3Chars(string I) {
-	try {
-		if (stoi(I) != 0) {
-			cout << "Input must be non-numeric\n";
-			return false;
-		}
-	} catch (std::invalid_argument) {
-		if (I.size() != 3) {
-			cout << "Must be 3 Letters\n";
-			return false;
-		}
-		if (I.size() == 3) {
-			return true;
-		}
-		return false;
-	}
-}
-bool IsInRange(string I) {
-	if (!IsPositive(I)) {
-		return false;
-	}
-	int test = stoi(I);
-	if (1 <= test && test <= 4) {
-		return true;
-	}
-	cout << "Number must be in list of options\n";
-	return false;
-}
-}  // namespace Validate
+// bool IsChars(string I) {
+//	try {
+//		if (stoi(I) != 0) {
+//			cout << "Input must be non-numeric\n";
+//			return false;
+//		}
+//	} catch (std::invalid_argument) {
+//		if (I.size() != 3) {
+//			cout << "Must be 3 Letters\n";
+//			return false;
+//		}
+//		if (I.size() == 3) {
+//			return true;
+//		}
+//		return false;
+//	}
+//}  // namespace Validate
