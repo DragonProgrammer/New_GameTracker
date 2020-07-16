@@ -10,7 +10,12 @@ int main() {
 
 	Game1.InputPlayNum();
 	cout << Game1.NumP();
-	vector<string> P = Game1.GetPlayers();
+	vector<string> P = Game1.GetInitials();
 	Game1.SelectGameType();
+	cout << Game1.Size() << endl;
+	Game1.InputPlayers(P);
+	cout << Game1.PlayersData();
+
+	cout << "here";
 	return 0;
 }

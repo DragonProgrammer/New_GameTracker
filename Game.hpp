@@ -15,7 +15,7 @@ class Game{
 		Game(int NP);
 // Size and NumP function supplied for general debug situations should the need arise
 		int Size();
-
+		int InitialLife();
 		int NumP();
 		
 
@@ -28,7 +28,7 @@ class Game{
 		void SetPlayer(string Name, int Life, int Position);
 		void InputPlayNum();
 		void InputPlayers(vector<string> P);
-		vector<string> GetPlayers();
+		vector<string> GetInitials();
 		void SelectGameType();
 };
 

@@ -73,12 +73,16 @@ void Game::InputPlayNum() {
 		cout << "Please input a number greater then 0\n";
 	}
 }
-void InputPlayers(vector<string> P) {
+void Game::InputPlayers(vector<string> P) {
+	int L = InitialLife();
 	for (auto i : P) {
+		// cout << i;
+		AddPlayer(i, L);
 	}
+	Players.erase(Players.begin());
 }
 
-vector<string> Game::GetPlayers() {
+vector<string> Game::GetInitials() {
 	vector<string> Names;
 	int num = this->NumP();
 	int PlayerNum = 1;
@@ -140,4 +144,5 @@ void Game::SelectGameType() {
 void Game::SetGameData(int L) { StartLife = L; }
 int Game::Size() { return Players.size(); }
 int Game::NumP() { return NumPlayers; }
+int Game::InitialLife() { return StartLife; }
 void Game::SetGameType(int T) { GameType = T; }
