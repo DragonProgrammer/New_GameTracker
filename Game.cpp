@@ -78,7 +78,7 @@ void InputPlayers(vector<string> P) {
 	}
 }
 
-vector Game::GetPlayers() {
+vector<string> Game::GetPlayers() {
 	vector<string> Names;
 	int num = this->NumP();
 	int PlayerNum = 1;
@@ -92,7 +92,7 @@ vector Game::GetPlayers() {
 		Init2.erase(remove_if(Init2.begin(), Init2.end(),
 		                      [](unsigned char c) { return !isalpha(c); }),
 		            Init2.end());
-		cout << Init2 << endl;
+		//	cout << Init2 << endl;
 
 		if (!Is3Chars(Init2)) {
 			continue;
@@ -112,14 +112,32 @@ void Game::SelectGameType() {
 	getline(cin, Game, '\n');
 	if (cin.fail()) {
 		cout << "no more inputs\n";
-		exit();
+		exit(0);
 	}
 	if (IsInRange(Game)) {
-		SetGameType(stoi(Game));
+		int C = stoi(Game);
+		switch (C) {
+			case 1:
+				SetGameData(20);
+				break;
+			case 2:
+				SetGameData(40);
+				break;
+			case 3:
+				SetGameData(20);
+				break;
+			case 4:
+				SetGameData(30);
+				break;
+			default:
+				cout << "How did this happen?\n";
+				break;
+		}
 	} else {
 		return SelectGameType();
 	}
 }
+void Game::SetGameData(int L) { StartLife = L; }
 int Game::Size() { return Players.size(); }
 int Game::NumP() { return NumPlayers; }
 void Game::SetGameType(int T) { GameType = T; }
