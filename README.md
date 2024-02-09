@@ -2,7 +2,7 @@ This is a rewrite of my first major project, submited as a final for my first Co
 
 Old program did not transfer over all the way and say that it was a done almost entirely in Main(), I just started rewriting it from scratch.
 
-Abamdon once i got a smart phone and relized there were several apps that did about the same thing.
+Abandon once i got a smart phone and relized there were several apps that did about the same thing.
 _________________________________________________________________________________________________________________________________
 
 Program would of asked for the type of game from the following options:
