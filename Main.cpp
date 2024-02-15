@@ -15,5 +15,12 @@ int main() {
 	Game1.SelectGameType();
 	Game1.InputPlayers(P);
 	Game1.GameHeader();
+	do {
+		int r = Game1.GetChanges();
+		while (r == -1) {
+			r = Game1.GetChanges();
+		}
+	} while (Game1.GameTurn() == 1);
+
 	return 0;
 }

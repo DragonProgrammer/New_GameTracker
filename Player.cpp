@@ -30,3 +30,15 @@ string Player::PlayerData() {
 	Output = GetName() + " " + to_string(GetLife()) + "\n";
 	return Output;
 }
+void Player::ChangeLife(int ChangeL) {
+	if (GetStatus() == 'L') return;  // check if player has not lost already
+	int life = GetLife();
+	int new_life = Life + ChangeL;
+	SetLife(new_life);
+	if (new_life <= 0) {
+		ChangeStatus('L');
+	}
+	return;
+}
+
+void Player::ChangeStatus(char ChangeS) { Status = ChangeS; }

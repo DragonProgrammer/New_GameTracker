@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include <algorithm>
 #include <cctype>
+#include <cstring>
 #include <iomanip>
 #include <ios>
 #include <iostream>
@@ -18,6 +19,7 @@ using std::right;
 using std::setfill;
 using std::setw;
 using std::stoi;
+using std::strtok;
 using std::to_string;
 using std::vector;
 using Validate::Is3Chars;
@@ -60,7 +62,7 @@ string Game::PlayersData() {
 }
 // Start of the interactive part of program
 void Game::InputPlayNum() {
-	cout << "\nnHow many players?\n";
+	cout << "\nHow many players?\n";
 	while (1) {
 		string input;  // leading white space is ignored
 		getline(cin, input, '\n');
@@ -155,7 +157,7 @@ void Game::SetGameType(int T) { GameType = T; }
 // format functions
 //
 void Game::GameHeader() {
-	for (int P = 0; P < Players.size(); P++) {
+	for (unsigned int P = 0; P < Players.size(); P++) {
 		if (P == 0) {
 			cout << setfill(' ') << right << setw(5) << Players[0].GetName();
 		} else {
@@ -163,11 +165,11 @@ void Game::GameHeader() {
 		}
 	}
 	cout << endl;
-	for (int U = 0; U < Players.size(); U++) {
+	for (unsigned int U = 0; U < Players.size(); U++) {
 		cout << "________";
 	}
 	cout << endl;
-	for (int L = 0; L < Players.size(); L++) {
+	for (unsigned int L = 0; L < Players.size(); L++) {
 		if (L == 0) {
 			cout << setw(5) << to_string(Players[0].GetLife());
 		} else {
@@ -175,4 +177,88 @@ void Game::GameHeader() {
 		}
 	}
 	cout << endl;
+}
+
+int Game::GameTurn() {
+	// checking for winners
+	int loss_counter = 0;
+	int first_living = -1;
+	int living = 0;
+
+	for (unsigned int W = 0; W < Players.size(); W++) {
+		// increment the status counters
+		if (Players[W].GetStatus() == 'L')
+			loss_counter++;
+		else {
+			living++;
+			first_living = W;
+		}
+		// if living is has multiple people break
+		if (living > 1) break;
+	}
+	if (loss_counter == Players.size()) {  // everyone lost
+		cout << "No one won.\n";
+		return 0;
+	}
+	if (loss_counter == Players.size() - 1) {  // one person won
+		cout << Players[first_living].GetName() << " won.\n";
+		return 0;
+	}
+
+	// normal output per turn
+	for (unsigned int P = 0; P < Players.size(); P++) {
+		if (P == 0) {
+			if (Players[P].GetStatus() == 'L') {
+				cout << setfill(' ') << right << setw(5) << Players[P].GetStatus();
+			} else {
+				cout << setfill(' ') << right << setw(5)
+				     << to_string(Players[P].GetLife());
+			}
+		}
+		// all other players
+		else {
+			cout << " | ";
+			if (Players[P].GetStatus() == 'L') {
+				cout << setfill(' ') << right << setw(5) << Players[P].GetStatus();
+			} else {
+				cout << setfill(' ') << right << setw(5)
+				     << to_string(Players[P].GetLife());
+			}
+		}
+	}
+	cout << endl;
+	return 1;
+}
+// math functions
+
+int Game::GetChanges() {
+	string input;
+	getline(cin, input, '\n');
+	char delim = ' ';
+	int spot = input.find(delim);
+	vector<string> input_split;
+	while (spot != -1) {
+		string input_part = input.substr(0, spot);
+		input_split.push_back(input_part);
+		input.erase(input.begin(), input.begin() + spot + 1);
+		spot = input.find(delim);
+	}
+
+	vector<int> changes_int;
+	for (unsigned int P = 0; P < input_split.size(); P++) {
+		if (!IsInt(input_split[P])) {
+			cout << "Player " << P + 1
+			     << " life changes are no numeric. \nPlease reinput life changes.";
+			return -1;
+		}
+		changes_int.push_back(stoi(input_split[P]));
+	}
+	ChangeLives(changes_int);
+	return 0;
+}
+
+void Game::ChangeLives(vector<int> LifeChanges) {
+	for (unsigned int L = 0; L < Players.size(); L++) {
+		Players[L].ChangeLife(LifeChanges[L]);
+	}
 }

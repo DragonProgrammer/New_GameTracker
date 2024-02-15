@@ -33,6 +33,12 @@ class Game{
 		
 		//format functions
 		void GameHeader();
+		int GameTurn();
+
+		//math functions
+		int GetChanges();
+		void ChangeLives(vector<int> LifeChanges);
+
 };
 
 #endif

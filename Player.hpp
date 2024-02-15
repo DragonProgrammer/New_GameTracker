@@ -16,7 +16,7 @@ class Player {
 	void SetLife(int L);
 	void SetName(string N);
 	void ChangeLife(int ChangeL);
-	void ChangeStatus(char ChangeC);
+	void ChangeStatus(char ChangeS);
 	void CheckLife();
 	int GetLife();
 	char GetStatus();
